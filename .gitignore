@@ -1,0 +1,9 @@
+node_modules/
+.cache/
+.vscode/
+yarn-error.log
+package-lock.json
+dist/
+settings.json
+.idea
+.DS_Store
