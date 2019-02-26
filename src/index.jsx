@@ -11,21 +11,21 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      remarks: ['1','2'],
+      remarks: ['1', '2'],
     };
     this.addRemark = this.addRemark.bind(this);
     this.delete = this.delete.bind(this);
   }
 
   addRemark(remark) {
-    const {remarks} = this.state;
+    const { remarks } = this.state;
     remarks.push(remark);
-    this.setState({remarks});
+    this.setState({ remarks });
   }
 
   delete(remark) {
-    const {remarks} = this.state;
-    this.setState({remarks: remarks.filter(item => item !== remark)});
+    const { remarks } = this.state;
+    this.setState({ remarks: remarks.filter(item => item !== remark) });
   }
 
   render() {
@@ -36,7 +36,7 @@ class App extends Component {
           addRemark: this.addRemark,
           delete: this.delete
         }} >
-        <div style={{margin: 20}}>
+        <div style={{ margin: 20 }}>
           <AddRemark />
           <RemarkList />
         </div>
