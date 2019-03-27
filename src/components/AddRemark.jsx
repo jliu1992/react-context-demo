@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Input } from 'antd';
-import RemarkContext from '../context/remark';
 
 const Search = Input.Search;
 
@@ -19,18 +18,14 @@ class AddRemark extends Component {
 
   render() {
     return (
-      <RemarkContext.Consumer>
-        {(context) => (
           <Search
             value={this.state.value}
             onChange={e => this.handleInputChange(e)}
             placeholder="input remark here"
             enterButton="Add"
             size="large"
-            onSearch={value => { context.addRemark(value); this.setState({ value: '' }); }}
+            onSearch={value => { this.props.addRemark(value); this.setState({ value: '' }); }}
           />
-        )}
-      </RemarkContext.Consumer>
     );
   }
 }

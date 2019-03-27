@@ -3,8 +3,6 @@ import { render } from "react-dom";
 import AddRemark from "./components/AddRemark";
 import RemarkList from "./components/RemarkList";
 
-import RemarkContext from "./context/remark";
-
 import "antd/dist/antd.css";
 
 class App extends Component {
@@ -33,18 +31,10 @@ class App extends Component {
 
   render() {
     return (
-      <RemarkContext.Provider
-        value={{
-          remarks: this.state.remarks,
-          addRemark: this.addRemark,
-          delete: this.delete
-        }}
-      >
-        <div style={{ margin: 20 }}>
-          <AddRemark />
-          <RemarkList />
-        </div>
-      </RemarkContext.Provider>
+      <div style={{ margin: 20 }}>
+        <AddRemark addRemark={this.addRemark} />
+        <RemarkList remarks={this.state.remarks} delete={this.delete} />
+      </div>
     );
   }
 }
