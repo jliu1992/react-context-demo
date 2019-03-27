@@ -1,17 +1,17 @@
-import React, { Component } from 'react';
-import { render } from 'react-dom';
-import AddRemark from './components/AddRemark';
-import RemarkList from './components/RemarkList';
+import React, { Component } from "react";
+import { render } from "react-dom";
+import AddRemark from "./components/AddRemark";
+import RemarkList from "./components/RemarkList";
 
-import RemarkContext from './context/remark';
+import RemarkContext from "./context/remark";
 
-import 'antd/dist/antd.css';
+import "antd/dist/antd.css";
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      remarks: ['1', '2'],
+      remarks: ["1", "2"]
     };
     this.addRemark = this.addRemark.bind(this);
     this.delete = this.delete.bind(this);
@@ -19,6 +19,9 @@ class App extends Component {
 
   addRemark(remark) {
     const { remarks } = this.state;
+    if (remarks.indexOf(remark) !== -1 || !remark) {
+      return;
+    }
     remarks.push(remark);
     this.setState({ remarks });
   }
@@ -35,14 +38,15 @@ class App extends Component {
           remarks: this.state.remarks,
           addRemark: this.addRemark,
           delete: this.delete
-        }} >
+        }}
+      >
         <div style={{ margin: 20 }}>
           <AddRemark />
           <RemarkList />
         </div>
-      </ RemarkContext.Provider>
+      </RemarkContext.Provider>
     );
   }
 }
 
-render(<App />, document.getElementById('root'));
+render(<App />, document.getElementById("root"));
